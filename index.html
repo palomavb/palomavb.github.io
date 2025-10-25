@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paloma Borges</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div>
+                    <div class="text-xl font-bold text-gray-800 hover:text-cyan-700 transition">
+                        <a href="#home">Paloma Borges</a>
+                    </div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wide">Data Scientist & Analyst</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about-me" class="text-gray-600 font-mono hover:text-cyan-600 transition">about me</a>
+                    <a href="projects.html" class="text-gray-600 font-mono hover:text-cyan-600 transition">projects</a>
+                    <!-- <a href="#resume" class="text-gray-600 font-mono hover:text-cyan-600 transition">resume</a> -->
+                    <a href="#contact" class="text-gray-600 font-mono hover:text-cyan-600 transition">contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#about-me" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">about-me</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">projects</a>
+                <!-- <a href="#resume" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">resume</a> -->
+                <a href="#contact" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section / Home -->
+    <section id="home" class="pt-24 pb-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center">
+                <div class="mb-8">
+                    <img src="profile.jpeg" alt="Paloma Borges" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold font-mono text-gray-900 mb-4">
+                    hi, I'm <span class="text-cyan-700">Paloma Borges</span> 👋🏼
+                </h1>
+                <p class="text-l text-gray-600 mb-6 max-w-2xl mx-auto">
+                    Fresh Graduate Data Scientist passionate about turning data into actionable insights
+                </p>
+                <!-- Social Links -->
+                <div class="flex justify-center gap-4 mb-8">
+                    <a href="https://github.com/palomavb" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 text-cyan-700 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 text-cyan-700 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://drive.google.com/file/d/19aM76dnJWMz5MbD-h1mfztHahyobpD9J/view?usp=drive_link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 text-cyan-700 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="flex justify-center gap-4 mb-8">
+                    <a href="projects.html" class="border-2 border-cyan-700 text-cyan-700 font-mono px-6 py-3 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition">
+                        view my work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about-me" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold font-mono text-gray-900 mb-8 text-center">
+                about <span class="text-cyan-700">me</span>
+            </h2>
+            <div class="text-gray-600 space-y-4 text-l">
+                <p>
+                    I'm a recent graduate with a degree in Data Science and Artificial Intelligence from <a href="https://emap.fgv.br/en">Fundação Getulio Vargas (FGV)</a>. 
+                    I enjoy building projects that combine analytics, visualization, and machine learning.
+                </p>
+                <p>
+                    During my studies, I developed strong skills in Python, R, SQL, and various machine 
+                    learning frameworks. I've worked on projects ranging from predictive analytics to 
+                    natural language processing, always focusing on delivering actionable results.
+                </p>
+                <p>
+                    I'm currently seeking opportunities where I can apply my analytical skills and 
+                    continue growing as a data scientist and analyst, particularly in [your specific interests: ].
+                </p>
+            </div>
+            
+            <!-- Skills 
+            <div class="mt-12 mb-12">
+                <h3 class="text-2xl font-bold font-mono text-gray-900 mb-6 text-center">skills & technologies</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">Python</div>
+                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">SQL</div>
+                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">Power BI</div>
+                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">R</div>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Skills Visualization Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-bold font-mono text-gray-900 mb-8">
+                this is what I <span class="text-cyan-700">know</span>
+            </h2>
+            <p class="text-l text-gray-600 max-w-l mx-auto">
+                I'm skilled in <strong>data visualization</strong>, <strong>programming</strong> and <strong>storytelling</strong>. 
+                You can explore my skills below.
+            </p>
+
+            <!-- Bubble Chart Container -->
+            <div id="bubble-chart" class="p-2"></div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Resume -->
+    <div class="max-w-4xl mx-auto text-center mb-12">
+        <!-- <p class="text-gray-600 mb-6">Check my resume to learn more about my background and experience:</p> -->
+        <a href="https://drive.google.com/file/d/19aM76dnJWMz5MbD-h1mfztHahyobpD9J/view?usp=drive_link" target="_blank" class="inline-flex items-center font-mono text-white bg-cyan-600 px-6 py-3 rounded-lg hover:bg-cyan-700 transition">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            check my resume (PDF)
+        </a>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold font-mono text-gray-900 mb-8">
+                get in <span class="text-cyan-700">touch</span>
+            </h2>
+            <p class="text-gray-600 mb-8 text-l">
+                I'm always open to discussing new opportunities, collaborations, or just connecting with fellow data enthusiasts!
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="mailto:palomavieiraborges@hotmail.com" class="flex items-center gap-2 bg-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                    <svg class="w-6 h-6 text-cyan-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="text-gray-700 font-mono">palomavieiraborges@hotmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="flex items-center gap-2 bg-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                    <svg class="w-6 h-6 text-cyan-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span class="text-gray-700 font-mono">LinkedIn</span>
+                </a>
+                <a href="https://github.com/palomavb" target="_blank" class="flex items-center gap-2 bg-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                    <svg class="w-6 h-6 text-cyan-700" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="text-gray-700 font-mono">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 px-4">
+        <div class="max-w-xl mx-auto text-center text-sm">
+            <p>&copy; 2025 Paloma Borges. Built with HTML and Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <!-- D3.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    
+        // Bubble Chart Script 
+    
+        // Skills data with categories, sizes, and descriptions
+        const skills = [
+            // Programming
+            { name: "python", category: "programming", size: 90, description: "My go-to language for data analysis, machine learning, and automation. Proficient in pandas, numpy, scikit-learn, and more." },
+            { name: "SQL", category: "programming", size: 80, description: "Expert in writing complex queries, optimizing database performance, and working with large datasets." },
+            { name: "R", category: "programming", size: 45, description: "Used for statistical analysis and data visualization with ggplot2." },
+            
+            // Data Visualization
+            //{ name: "Tableau", category: "Data Viz", size: 85, description: "I love using Tableau to turn complex data into dashboards that people actually enjoy using. I teach dashboard design and create compelling visualizations.", link: "https://linkedin.com/in/palomavieiraborges" },
+            { name: "Power BI", category: "data visualization", size: 60, description: "Creating interactive dashboards and reports for business intelligence." },
+            { name: "chart design", category: "data visualization", size: 65, description: "Strong understanding of visual perception, color theory, and effective chart selection for clear communication." },
+            { name: "dashboard design", category: "data visualization", size: 70, description: "Designing user-friendly, insightful dashboards with focus on hierarchy and user experience." },
+            
+            // Soft Skills 
+            { name: "communication", category: "soft skills", size: 80, description: "Translating technical concepts into clear, actionable insights for non-technical stakeholders." },
+            { name: "storytelling", category: "soft skills", size: 70, description: "Crafting compelling narratives from data to drive decision-making and engagement." },
+            //{ name: "Critical Thinking", category: "Soft Skills", size: 75, description: "Analyzing problems from multiple angles and making data-driven decisions." },
+            //{ name: "Public Speaking", category: "Soft Skills", size: 65, description: "Presenting findings and insights to diverse audiences with confidence." },
+            { name: "teamwork", category: "soft skills", size: 65, description: "Collaborating effectively with cross-functional teams." },
+            
+            // Statistics & ML
+            { name: "statistics", category: "statistics & ML", size: 65, description: "Strong foundation in statistical methods, hypothesis testing, and experimental design." },
+            { name: "machine mearning", category: "statistics & ML", size: 60, description: "Building and deploying predictive models using various ML algorithms and frameworks." },
+            { name: "A/B testing", category: "statistics & ML", size: 45, description: "Designing experiments and analyzing results to optimize product features." },
+            { name: "cluster analysis", category: "statistics & ML", size: 50, description: "Segmenting data to discover patterns and group similar observations." },
+            
+            // Additional Skills 
+            //{ name: "Design Thinking", category: "Other", size: 65, description: "User-centered approach to problem-solving and innovation." },
+            //{ name: "Graphic Design", category: "Other", size: 45, description: "Creating visual assets and infographics to support data storytelling." },
+        ];
+
+        // Color scheme 
+        const colors = {
+            "programming": "#155e75",    
+            "data visualization": "#6F67B8",         
+            "soft skills": "#D9737B",  
+            "statistics & ML": "#16A6C7",  
+            "other": "#7AA36F"             
+        };
+
+        // Set up dimensions
+        const width = Math.min(1000, window.innerWidth - 100);
+        const height = 500;
+
+        // Create SVG
+        const svg = d3.select("#bubble-chart")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("style", "max-width: 100%; height: auto;");
+
+        // Create simulation
+        const simulation = d3.forceSimulation(skills)
+            .force("charge", d3.forceManyBody().strength(5))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(d => d.size + 2))
+            .force("x", d3.forceX(width / 2).strength(0.02))
+            .force("y", d3.forceY(height / 2).strength(0.12));
+
+        // Create bubbles
+        const bubbles = svg.selectAll(".bubble")
+            .data(skills)
+            .enter()
+            .append("g")
+            .attr("class", "bubble")
+            .style("cursor", "pointer");
+
+        // Add circles
+        bubbles.append("circle")
+            .attr("r", d => d.size)
+            .attr("fill", d => colors[d.category])
+            .style("transition", "all 0.3s ease")
+            .on("mouseover", function() {
+                d3.select(this).style("opacity", 0.8).style("filter", "brightness(1.1)");
+            })
+            .on("mouseout", function() {
+                d3.select(this).style("opacity", 1).style("filter", "brightness(1)");
+            })
+            .on("click", function(event, d) {
+                showModal(d);
+            });
+
+        // Add text
+        bubbles.append("text")
+            .attr("class", "bubble-text")
+            .attr("text-anchor", "middle")
+            .attr("dy", ".35em")
+            .style("font-size", d => Math.min(d.size / 3, 16) + "px")
+            .style("fill", "white")
+            .style("font-family", "ui-monospace, monospace")
+            .style("font-weight", "500")
+            .style("pointer-events", "none")
+            .text(d => d.name)
+            .each(function(d) {
+                // Wrap text if needed
+                const text = d3.select(this);
+                const words = d.name.split(/\s+/);
+                if (words.length > 1) {
+                    text.text("");
+                    words.forEach((word, i) => {
+                        text.append("tspan")
+                            .attr("x", 0)
+                            .attr("dy", i === 0 ? "-0.3em" : "1em")
+                            .text(word);
+                    });
+                }
+            });
+
+        // Update positions on tick
+        simulation.on("tick", () => {
+            bubbles.attr("transform", d => `translate(${d.x}, ${d.y})`);
+        });
+
+        // Modal functions
+        function showModal(skill) {
+            const modal = document.getElementById("modal");
+            const content = document.getElementById("modal-content");
+            
+            let linkHTML = "";
+            if (skill.link) {
+                linkHTML = `<a href="${skill.link}" target="_blank" class="inline-block mt-4 bg-black text-white font-mono px-6 py-2 rounded-lg hover:bg-gray-800 transition">LinkedIn Post</a>`;
+            }
+            
+            content.innerHTML = `
+                <div class="inline-block px-3 py-1 rounded-full text-sm font-mono mb-3" style="background-color: ${colors[skill.category]}20; color: ${colors[skill.category]}">
+                    ${skill.category}
+                </div>
+                <h2 class="text-3xl font-bold font-mono mb-4">${skill.name}</h2>
+                <p class="text-gray-700 text-l leading-relaxed">${skill.description}</p>
+                ${linkHTML}
+            `;
+            
+            modal.classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.add("hidden");
+        }
+
+        document.getElementById("close-modal").addEventListener("click", closeModal);
+        document.getElementById("modal").addEventListener("click", function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Responsive resize
+        window.addEventListener("resize", () => {
+            const newWidth = Math.min(1000, window.innerWidth - 100);
+            svg.attr("width", newWidth);
+            simulation.force("center", d3.forceCenter(newWidth / 2, height / 2));
+            simulation.alpha(0.3).restart();
+        });
+    </script>
+</body>
+</html>
