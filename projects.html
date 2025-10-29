@@ -6,43 +6,66 @@
     <title>Projects - Paloma Borges</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Check for saved theme preference or default to light mode
-        const theme = localStorage.getItem('theme') || 'light';
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
+        tailwind.config = {
+            darkMode: 'class'
         }
     </script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full top-0 z-50">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm fixed w-full top-0 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div>
-                    <div class="text-xl font-bold text-gray-800 hover:text-cyan-700 transition">
+                    <div class="text-xl font-bold text-gray-800 dark:text-gray-100 hover:text-cyan-700 dark:hover:text-cyan-400 transition">
                         <a href="index.html">Paloma Borges</a>
                     </div>
-                    <div class="text-xs text-gray-400 uppercase tracking-wide">Data Scientist & Analyst</div>
+                    <div class="text-xs text-gray-400 dark:text-gray-400 uppercase tracking-wide">Data Scientist & Analyst</div>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html#about-me" class="text-gray-600 font-mono hover:text-cyan-600 transition">about me</a>
-                    <a href="projects.html" class="text-cyan-600 font-mono font-bold transition">projects</a>
-                    <a href="index.html#contact" class="text-gray-600 font-mono hover:text-cyan-600 transition">contact</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#about-me" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">about me</a>
+                    <a href="projects.html" class="text-cyan-600 dark:text-cyan-500 font-mono font-bold transition">projects</a>
+                    <a href="resume.html" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">experience</a> 
+                    <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">contact</a>
+                
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
                 </div>
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <!-- Mobile: Dark Mode + Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <!-- Dark Mode Toggle (Mobile) -->
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">                    
+                        <svg class="theme-icon-dark hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg class="theme-icon-light hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                        
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html#about-me" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">about-me</a>
+                <a href="index.html#about-me" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">about-me</a>
                 <a href="projects.html" class="block px-3 py-2 text-cyan-600 font-bold">projects</a>
-                <a href="index.html#contact" class="block px-3 py-2 text-gray-600 hover:bg-gray-50">contact</a>
+                <a href="resume.html" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">experience</a> 
+                <a href="index.html#contact" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">contact</a>
             </div>
         </div>
     </nav>
@@ -50,44 +73,44 @@
     <!-- Projects Header -->
     <section class="pt-28 pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl sm:text-5xl font-bold font-mono text-gray-900 mb-4">
-                my <span class="text-cyan-700">projects</span>
+            <h1 class="text-4xl sm:text-5xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-4">
+                my <span class="text-cyan-700  dark:text-cyan-500">projects</span>
             </h1>
-            <p class="text-l text-gray-600 max-w-2xl mx-auto">
+            <p class="text-l text-gray-600 dark:text-gray-200 max-w-2xl mx-auto">
                 A collection of data science and analytics projects I've worked on
             </p>
         </div>
     </section>
 
     <!-- Projects Grid -->
-    <section class="pb-16 px-4 sm:px-6 lg:px-8">
+    <section class="pb-16 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Project Card 1 -->
-                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
                     <div class="h-64 overflow-hidden">
                         <img src="assets/dash_electoral_data.jpeg" alt="Dashboard Electoral Data" class="w-full h-full object-cover">
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold font-mono text-gray-900 mb-3">Promoting Electoral Transparency: Visual Analysis of Brazilian Electoral Data</h3>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h3 class="text-xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-3">Promoting Electoral Transparency: Visual Analysis of Brazilian Electoral Data</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                             Built an interactive dashboard analyzing Brazilian electoral data. 
                             Conducted data cleaning, transformation, and wrangling to create clear visualizations on candidate profiles,
                             female participation, and vote distribution, supporting transparency and public analysis.
                         </p>
                         
                         <div class="mb-4">
-                            <h4 class="text-sm font-bold font-mono text-gray-700 mb-2">Tech Stack:</h4>
+                            <h4 class="text-sm font-bold font-mono text-gray-700 dark:text-gray-200 mb-2">Tech Stack:</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Power BI</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">AWS (Athena, S3)</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">Power BI</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">AWS (Athena, S3)</span>
                             </div>
                         </div>
                         
                         <div class="flex gap-3">
-                            <a href="#" target="_blank" class="flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-mono text-sm">
+                            <a href="#" target="_blank" class="flex items-center gap-2 text-cyan-700 dark:text-cyan-500 hover:text-cyan-800 dark:hover:text-cyan-600 font-mono text-sm">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                 </svg>
@@ -98,30 +121,30 @@
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
                     <div class="h-64 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
                         
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold font-mono text-gray-900 mb-3">Em Busca do Ouro Olímpico: Brazilian Sailing Confederation Project</h3>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h3 class="text-xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-3">Em Busca do Ouro Olímpico: Brazilian Sailing Confederation Project</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                             Partnered with the Brazilian Sailing Confederation (CBVela) to develop an athlete ranking system, consolidating 130k+ competition records. 
                             Built data collection and standardization pipelines and tested ranking models (Elo Rating, Keener's Method), delivering strategic insights 
                             for Olympic preparation.
                         </p>
                         
                         <div class="mb-4">
-                            <h4 class="text-sm font-bold font-mono text-gray-700 mb-2">Tech Stack:</h4>
+                            <h4 class="text-sm font-bold font-mono text-gray-700 dark:text-gray-200 mb-2">Tech Stack:</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Python</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">NLP</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Ranking Algorithms</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">NLP</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">Ranking Algorithms</span>
                             </div>
                         </div>
                         
                         <div class="flex gap-3">
-                            <a href="https://github.com/palomavb/sailing-rankings" target="_blank" class="flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-mono text-sm">
+                            <a href="https://github.com/palomavb/sailing-rankings" target="_blank" class="flex items-center gap-2 text-cyan-700 dark:text-cyan-500 hover:text-cyan-800 dark:hover:text-cyan-600 font-mono text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
@@ -132,29 +155,29 @@
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
                     <div class="h-64 overflow-hidden">
                         <img src="assets/dash_acompanhamento.jpeg" alt="Operation Dashboard" class="w-full h-full object-cover">
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold font-mono text-gray-900 mb-3">Operation Monitoring Dashboard</h3>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h3 class="text-xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-3">Operation Monitoring Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                             Rebuilt comprehensive dashboard consolidating 12+ data sources into a centralized, 
                             automated BI solution with hourly updates and Slack integration. 
                             Enabled supervisors to track key KPIs in near real-time across all customer service channels.
                         </p>
                         
                         <div class="mb-4">
-                            <h4 class="text-sm font-bold font-mono text-gray-700 mb-2">Tech Stack:</h4>
+                            <h4 class="text-sm font-bold font-mono text-gray-700 dark:text-gray-200 mb-2">Tech Stack:</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Power BI</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Excel</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">Power BI</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">Excel</span>
                             </div>
                         </div>
                         
                         <div class="flex gap-3">
-                            <a href="#" class="flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-mono text-sm">
+                            <a href="#" class="flex items-center gap-2 text-cyan-700 dark:text-cyan-500 hover:text-cyan-800 dark:hover:text-cyan-600 font-mono text-sm">
                                 see more
                             </a>
                         </div>
@@ -162,36 +185,36 @@
                 </div>
 
                 <!-- Project Card 4 -->
-                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
                     <div class="h-64 bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center">
                         <img src="assets/soundscapes.png" alt="Operation Dashboard" class="w-full h-full object-cover">
                     </div>
                     
                     <div class="p-6">
-                        <h3 class="text-xl font-bold font-mono text-gray-900 mb-3">SoundScapes: A Deep Dive into Spotify's Tracks</h3>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h3 class="text-xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-3">SoundScapes: A Deep Dive into Spotify's Tracks</h3>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
                             An interactive scrollytelling web application exploring Spotify's most popular tracks from 2000-2019. 
                             Users discover music evolution trends through visualizations and multiple chart types and can search 
                             their favorite songs to see how they rank across audio features like energy, danceability, and tempo.
                         </p>
                         
                         <div class="mb-4">
-                            <h4 class="text-sm font-bold font-mono text-gray-700 mb-2">Tech Stack:</h4>
+                            <h4 class="text-sm font-bold font-mono text-gray-700 dark:text-gray-200 mb-2">Tech Stack:</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">D3.js</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">HTML</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">D3.js</span>
+                                <span class="bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-200 px-3 py-1 rounded-full text-sm">HTML</span>
                             </div>
                         </div>
                         
                         <div class="flex gap-3">
-                            <a href="https://github.com/palomavb/final-project-soundscapes" target="_blank" class="flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-mono text-sm">
+                            <a href="https://github.com/palomavb/final-project-soundscapes" target="_blank" class="flex items-center gap-2 text-cyan-700 dark:text-cyan-500 hover:text-cyan-800 dark:hover:text-cyan-600 font-mono text-sm">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
                                 GitHub
                             </a>
-                            <a href="https://fgv-vis-2023.github.io/final-project-soundscapes/" target="_blank" class="flex items-center gap-2 text-cyan-700 hover:text-cyan-800 font-mono text-sm">
+                            <a href="https://fgv-vis-2023.github.io/final-project-soundscapes/" target="_blank" class="flex items-center gap-2 text-cyan-700 dark:text-cyan-500 hover:text-cyan-800 dark:hover:text-cyan-600 font-mono text-sm">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                 </svg>
@@ -213,12 +236,58 @@
     </footer>
 
     <script>
+        // Dark mode functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light' mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Set initial theme
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle dark mode class
+            document.documentElement.classList.toggle('dark');
+            
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            
+            // Save preference to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>

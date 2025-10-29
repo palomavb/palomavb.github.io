@@ -6,13 +6,12 @@
     <title>Paloma Borges</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        const theme = localStorage.getItem('theme') || 'light';
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
+        tailwind.config = {
+            darkMode: 'class'
         }
     </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
     <!-- Navigation -->
     <nav class="bg-white dark:bg-gray-800 shadow-sm fixed w-full top-0 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,27 +22,42 @@
                     </div>
                     <div class="text-xs text-gray-400 dark:text-gray-400 uppercase tracking-wide">Data Scientist & Analyst</div>
                 </div>
-                <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                    </svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="#about-me" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">about me</a>
                     <a href="projects.html" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">projects</a>
                     <a href="resume.html" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">experience</a> 
                     <a href="#contact" class="text-gray-600 dark:text-gray-300 font-mono hover:text-cyan-600 dark:hover:text-cyan-400 transition">contact</a>
+                
+                    <!-- Dark Mode Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
                 </div>
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                
+                <!-- Mobile: Dark Mode + Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <!-- Dark Mode Toggle (Mobile) -->
+                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">                    
+                        <svg class="theme-icon-dark hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg class="theme-icon-light hidden w-5 h-5 text-gray-800 dark:text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                        
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
         <!-- Mobile menu -->
@@ -65,31 +79,31 @@
                     <img src="assets/profile.jpeg" alt="Paloma Borges" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover">
                 </div>
                 <h1 class="text-4xl sm:text-5xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-4">
-                    hi, I'm <span class="text-cyan-700 dark:text-cyan-400">Paloma Borges</span> 👋🏼
+                    hi, I'm <span class="text-cyan-700 dark:text-cyan-500">Paloma Borges</span> 👋🏼
                 </h1>
                 <p class="text-l text-gray-600 dark:text-gray-200 mb-6 max-w-2xl mx-auto">
                     Fresh Graduate Data Scientist passionate about turning data into actionable insights
                 </p>
                 <!-- Social Links -->
                 <div class="flex justify-center gap-4 mb-8">
-                    <a href="https://github.com/palomavb" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:border-cyan-500 transition">
+                    <a href="https://github.com/palomavb" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-500 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:text-white dark:hover:border-cyan-500 transition">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
                     </a>
-                    <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:border-cyan-500 transition">
+                    <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-500 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:text-white dark:hover:border-cyan-500 transition">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                     </a>
-                    <a href="https://drive.google.com/file/d/19aM76dnJWMz5MbD-h1mfztHahyobpD9J/view?usp=drive_link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:border-cyan-500 transition">
+                    <a href="https://drive.google.com/file/d/19aM76dnJWMz5MbD-h1mfztHahyobpD9J/view?usp=drive_link" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-500 hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:text-white dark:hover:border-cyan-500 transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                     </a>
                 </div>
                 <div class="flex justify-center gap-4 mb-8">
-                    <a href="projects.html" class="border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-400 font-mono px-6 py-3 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:border-cyan-500 transition">
+                    <a href="projects.html" class="border-2 border-cyan-700 dark:border-cyan-500 text-cyan-700 dark:text-cyan-500 font-mono px-6 py-3 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 dark:hover:bg-cyan-500 dark:hover:text-white dark:hover:border-cyan-500 transition">
                         view my work
                     </a>
                 </div>
@@ -101,11 +115,11 @@
     <section id="about-me" class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-8 text-center">
-                about <span class="text-cyan-700 dark:text-cyan-400">me</span>
+                about <span class="text-cyan-700 dark:text-cyan-500">me</span>
             </h2>
-            <div class="text-gray-600 dark:text-gray-400 space-y-4 text-l">
+            <div class="text-gray-600 dark:text-gray-300 space-y-4 text-l">
                 <p>
-                    I'm a recent graduate with a degree in Data Science and Artificial Intelligence from <a href="https://emap.fgv.br/en" class="text-cyan-700 dark:text-cyan-400 hover:underline">Fundação Getulio Vargas (FGV)</a>. 
+                    I'm a recent graduate with a degree in Data Science and Artificial Intelligence from <a href="https://emap.fgv.br/en" class="text-cyan-700 dark:text-cyan-500 hover:underline">Fundação Getulio Vargas (FGV)</a>. 
                     I enjoy building projects that combine analytics, visualization, and machine learning.
                 </p>
                 <p>
@@ -118,18 +132,6 @@
                     continue growing as a data scientist and analyst, particularly in [your specific interests: ].
                 </p>
             </div>
-            
-            <!-- Skills 
-            <div class="mt-12 mb-12">
-                <h3 class="text-2xl font-bold font-mono text-gray-900 mb-6 text-center">skills & technologies</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">Python</div>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">SQL</div>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">Power BI</div>
-                    <div class="bg-gray-50 px-4 py-3 rounded-lg font-mono text-center text-gray-700">R</div>
-                </div>
-            </div>
-            -->
         </div>
     </section>
 
@@ -137,9 +139,9 @@
     <section class="py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-3xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-8">
-                this is what I <span class="text-cyan-700 dark:text-cyan-400">know</span>
+                this is what I <span class="text-cyan-700 dark:text-cyan-500">know</span>
             </h2>
-            <p class="text-l text-gray-600 dark:text-gray-400 max-w-l mx-auto">
+            <p class="text-l text-gray-600 dark:text-gray-200 max-w-l mx-auto">
                 I'm skilled in <strong>data visualization</strong>, <strong>programming</strong> and <strong>storytelling</strong>. 
                 You can explore my skills below.
             </p>
@@ -176,25 +178,25 @@
     <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold font-mono text-gray-900 dark:text-gray-100 mb-8">
-                get in <span class="text-cyan-700 dark:text-cyan-400">touch</span>
+                get in <span class="text-cyan-700 dark:text-cyan-500">touch</span>
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-8 text-l">
+            <p class="text-gray-600 dark:text-gray-300 mb-8 text-l">
                 I'm always open to discussing new opportunities, collaborations, or just connecting with fellow data enthusiasts!
             </p>
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="mailto:palomavieiraborges@hotmail.com" class="flex items-center gap-2 bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                <a href="mailto:palomavieiraborges@hotmail.com" class="flex items-center gap-2 bg-white dark:bg-gray-800 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
                     <svg class="w-6 h-6 text-cyan-700 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                     <span class="text-gray-700 dark:text-gray-300 font-mono">palomavieiraborges@hotmail.com</span>
                 </a>
-                <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="flex items-center gap-2 bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                <a href="https://linkedin.com/in/palomavieiraborges" target="_blank" class="flex items-center gap-2 bg-white dark:bg-gray-800 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
                     <svg class="w-6 h-6 text-cyan-700 dark:text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                     <span class="text-gray-700 dark:text-gray-300 font-mono">LinkedIn</span>
                 </a>
-                <a href="https://github.com/palomavb" target="_blank" class="flex items-center gap-2 bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
+                <a href="https://github.com/palomavb" target="_blank" class="flex items-center gap-2 bg-white dark:bg-gray-800 px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
                     <svg class="w-6 h-6 text-cyan-700 dark:text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
@@ -215,37 +217,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 
     <script>
-        // Dark mode toggle functionality
+        // Dark mode functionality
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-        // Function to update icon visibility
-        function updateThemeIcon() {
-            if (document.documentElement.classList.contains('dark')) {
-                themeToggleDarkIcon.classList.add('hidden');
-                themeToggleLightIcon.classList.remove('hidden');
-            } else {
-                themeToggleLightIcon.classList.add('hidden');
-                themeToggleDarkIcon.classList.remove('hidden');
-            }
+        // Check for saved theme preference or default to 'light' mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Set initial theme
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
         }
 
-        // Show correct icon on page load
-        updateThemeIcon();
-
+        // Toggle theme on button click
         themeToggleBtn.addEventListener('click', function() {
-            // Toggle dark mode
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
+            // Toggle dark mode class
+            document.documentElement.classList.toggle('dark');
             
-            // Update icons
-            updateThemeIcon();
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            
+            // Save preference to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
         });
 
         // Mobile menu toggle
