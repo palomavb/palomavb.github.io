@@ -147,7 +147,7 @@
             </p>
 
             <!-- Bubble Chart Container -->
-            <div id="bubble-chart" class="p-2"></div>
+            <div id="bubble-chart" class="p-2 flex justify-center"></div>
         </div>
     </section>
 
@@ -215,8 +215,11 @@
     <script>
         // Dark mode functionality
         const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeIconsDark = document.querySelectorAll('.theme-icon-dark');
+        const themeIconsLight = document.querySelectorAll('.theme-icon-light');
 
         // Check for saved theme preference or default to 'light' mode
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -225,19 +228,26 @@
         if (currentTheme === 'dark') {
             document.documentElement.classList.add('dark');
             themeToggleLightIcon.classList.remove('hidden');
+            themeIconsDark.forEach(icon => icon.classList.add('hidden'));
+            themeIconsLight.forEach(icon => icon.classList.remove('hidden'));
         } else {
             document.documentElement.classList.remove('dark');
             themeToggleDarkIcon.classList.remove('hidden');
+            themeIconsDark.forEach(icon => icon.classList.remove('hidden'));
+            themeIconsLight.forEach(icon => icon.classList.add('hidden'));
         }
 
-        // Toggle theme on button click
-        themeToggleBtn.addEventListener('click', function() {
+        function toggleTheme() {
             // Toggle dark mode class
             document.documentElement.classList.toggle('dark');
             
-            // Toggle icons
+            // Toggle desktop icons
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
+            
+            // Toggle mobile icons
+            themeIconsDark.forEach(icon => icon.classList.toggle('hidden'));
+            themeIconsLight.forEach(icon => icon.classList.toggle('hidden'));
             
             // Save preference to localStorage
             if (document.documentElement.classList.contains('dark')) {
@@ -245,7 +255,13 @@
             } else {
                 localStorage.setItem('theme', 'light');
             }
-        });
+        }
+
+        // Toggle theme on button click (desktop)
+        themeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Toggle theme on button click (mobile)
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
 
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -278,7 +294,7 @@
             
             // Data Visualization
             //{ name: "Tableau", category: "Data Viz", size: 85, description: "I love using Tableau to turn complex data into dashboards that people actually enjoy using. I teach dashboard design and create compelling visualizations.", link: "https://linkedin.com/in/palomavieiraborges" },
-            { name: "Power BI", category: "data visualization", size: 70, description: "Creating interactive dashboards and reports for business intelligence." },
+            { name: "Power BI & Looker", category: "data visualization", size: 70, description: "Creating interactive dashboards and reports for business intelligence." },
             { name: "dashboard design", category: "data visualization", size: 70, description: "Designing user-friendly, insightful dashboards with focus on user experience. Strong understanding of visual perception, color theory, and effective chart selection for clear communication." },
             
             // Soft Skills 
@@ -309,7 +325,8 @@
         };
 
         // Set up dimensions
-        const width = Math.min(1000, window.innerWidth - 100);
+        const containerWidth = Math.min(600, window.innerWidth - 100);
+        const width = containerWidth;
         const height = 500;
 
         // Create SVG
@@ -318,7 +335,7 @@
             .attr("width", width)
             .attr("height", height)
             .attr("viewBox", `0 0 ${width} ${height}`)
-            .attr("style", "max-width: 100%; height: auto;");
+            .attr("style", "max-width: 100%; height: auto; display: block; margin: 0 auto;");
 
         // Create simulation
         const simulation = d3.forceSimulation(skills)
@@ -415,7 +432,7 @@
 
         // Responsive resize
         window.addEventListener("resize", () => {
-            const newWidth = Math.min(1000, window.innerWidth - 100);
+            const newWidth = Math.min(600, window.innerWidth - 100);
             svg.attr("width", newWidth);
             simulation.force("center", d3.forceCenter(newWidth / 2, height / 2));
             simulation.alpha(0.3).restart();
